@@ -8,6 +8,7 @@
     <Project Path="src/SalesforceClient.NetCoreForce/SalesforceClient.NetCoreForce.csproj" />
   </Folder>
   <Folder Name="/tests/">
+    <Project Path="tests/SalesforceClient.IntegrationTests/SalesforceClient.IntegrationTests.csproj" />
     <Project Path="tests/SalesforceClient.Tests/SalesforceClient.Tests.csproj" />
   </Folder>
 </Solution>
