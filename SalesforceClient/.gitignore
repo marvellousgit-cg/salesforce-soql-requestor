@@ -2,3 +2,6 @@ bin/
 obj/
 *.user
 .vs/
+
+# Integration test credentials — never commit real values
+tests/**/appsettings.integration.json
