@@ -24,4 +24,19 @@
     <ProjectReference Include="..\SalesforceClient.Abstractions\SalesforceClient.Abstractions.csproj" />
   </ItemGroup>
 
+  <!--
+    Grant internal visibility to test projects.
+    Using <InternalsVisibleTo> here (rather than a hand-written AssemblyInfo.cs) is the
+    canonical SDK idiom: the SDK merges these into the auto-generated AssemblyInfo so there
+    is no risk of a conflict between the two files.
+
+    DynamicProxyGenAssembly2 is Castle Windsor's proxy assembly used by Moq at runtime.
+    Because this assembly is unsigned, only the name is required — no public key needed.
+  -->
+  <ItemGroup>
+    <InternalsVisibleTo Include="SalesforceClient.Tests" />
+    <InternalsVisibleTo Include="SalesforceClient.IntegrationTests" />
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+  </ItemGroup>
+
 </Project>
