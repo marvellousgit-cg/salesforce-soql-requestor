@@ -1,0 +1,35 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{cs,csx}]
+indent_size = 4
+
+# ── Nullable / null parameter validation ──────────────────────────────────────
+# CA1062: Validate arguments of public methods — enforced; NRT covers most cases
+#         but explicit ThrowIfNull is required for public constructors/methods
+#         that may receive null from non-NRT callers.
+dotnet_diagnostic.CA1062.severity = warning
+
+# ── ConfigureAwait ─────────────────────────────────────────────────────────────
+# CA2007: Do not directly await a Task in library code without ConfigureAwait(false)
+dotnet_diagnostic.CA2007.severity = warning
+
+# ── Exception handling ─────────────────────────────────────────────────────────
+# CA1031: Do not catch general exception types without re-throwing or logging
+dotnet_diagnostic.CA1031.severity = warning
+
+[tests/**/*.cs]
+# Suppress ConfigureAwait requirement in test projects — no SynchronizationContext to worry about
+dotnet_diagnostic.CA2007.severity = none
+
+# ── C# style ─────────────────────────────────────────────────────────────────
+csharp_style_namespace_declarations = file_scoped:warning
+csharp_prefer_braces = true:suggestion
+csharp_style_prefer_primary_constructors = false:suggestion
+dotnet_sort_system_directives_first = true
